@@ -1,0 +1,63 @@
+TASK-4 (Flower Classifier)
+
+PYTHON CODE:
+
+
+ifrom sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+# Load the Iris dataset
+flower_data = load_iris()
+
+# Create a DataFrame
+iris_df = pd.DataFrame(
+flower_data.data,
+columns=flower_data.feature_names
+)
+
+# Target variable
+species = flower_data.target
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(
+iris_df,
+species,
+train_size=0.70,
+random_state=42,
+shuffle=True
+)
+
+# Display dataset information
+print("IRIS FLOWER DATASET")
+print("-" * 25)
+
+print("Total Flowers:", len(iris_df))
+print("Training Set Size:", len(X_train))
+print("Testing Set Size:", len(X_test))
+
+print("\nFeature Names:")
+for feature in iris_df.columns:
+print("-", feature)
+
+print("\nFlower Species:")
+for name in flower_data.target_names:
+print("-", name)
+
+OUTPUT:
+IRIS FLOWER DATASET
+-------------------------
+Total Flowers: 150
+Training Set Size: 105
+Testing Set Size: 45
+
+Feature Names:
+- sepal length (cm)
+- sepal width (cm)
+- petal length (cm)
+- petal width (cm)
+
+Flower Species:
+- setosa
+- versicolor
+- virginica
